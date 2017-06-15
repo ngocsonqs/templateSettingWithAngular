@@ -1,0 +1,25 @@
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+
+.hidden {
+  display : none;
+}
+
+p.blue {
+  background-color : #20AFF1;
+  color : #21211A;
+}
+
+p.black {
+  background-color : #090909;
+  color : #F0F353;
+}
+
+p.white {
+  background-color : #fff;
+  color : #F21F09;
+}

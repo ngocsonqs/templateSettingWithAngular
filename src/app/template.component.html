@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- START LEFT COMPONENT -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Setting</h3>
+        </div>
+        <div class="panel-body">
+          <form action = "" method = "POST">
+            <div class="form-group">
+              <label for = "inputTmpSelect">Template</label>
+              <select name="tmpSelect" id="inputTmpSelect" class="form-control" #theme (change) = "0">
+                <option value="blue">デフォルト（黒・青）</option>
+                <option value="black">黄・黒</option>
+                <option value="white">赤・白</option>
+                <option value="custom">カスタマイズ</option>
+              </select>
+            </div>
+
+            <div class="row"
+              [ngStyle] = "{
+                display : theme.value === 'custom' ? 'block' : 'none'
+              }"
+            >
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <label for="inputText-Color">Text Color</label>
+                  <input type="color" name="text-color" id="inputText-Color" class="form-control" #textColor (change) = "0">
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <label for="bg-Color">Background Color</label>
+                  <input type="color" name="bg-color" id="bg-Color" class="form-control" #bgColor (change) = "0" value = "#ffffff">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END LEFT COMPONENT -->
+
+    <!-- START RIGHT COMPONENT -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Panel title</h3>
+        </div>
+        <div class="panel-body">
+          <textarea name="txt" id="inputTxt" class="form-control" rows="3" required="required"
+            [(ngModel)] = "txtDefault"
+          >{{txtDefault}}</textarea>
+        </div>
+
+        <p class="panel-footer result {{theme.value}}" *ngIf = "theme.value !== 'custom'">{{txtDefault}}</p>
+
+        <p class="panel-footer result"
+          *ngIf = "theme.value === 'custom'"
+          [ngStyle] = "{
+            backgroundColor : bgColor.value,
+            color : textColor.value
+          }"
+        >{{txtDefault}}</p>
+      </div>
+    </div>
+    <!-- END RIGHT COMPONENT -->
+  </div>
+</div>
